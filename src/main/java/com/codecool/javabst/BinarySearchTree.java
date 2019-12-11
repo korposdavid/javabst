@@ -7,13 +7,17 @@ public class BinarySearchTree {
     private BinaryTreeNode root;
 
     public static BinarySearchTree build(List<Integer> elements) {
+        int rootIndex = elements.size()/2;
+        BinaryTreeNode root = new BinaryTreeNode(elements.get(rootIndex));
+
         BinarySearchTree result = new BinarySearchTree();
-        for (Integer element :
-                elements) {
-            result.add(element);
-        }
+        result.setRoot(root);
+
+        root.buildChildren(elements, rootIndex, 0, elements.size()-1);
+
         return result;
     }
+
 
     public BinaryTreeNode getRoot() {
         return this.root;
